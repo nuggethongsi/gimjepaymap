@@ -8,14 +8,12 @@ const app = express();
 const KAKAO_API_KEY = process.env.KAKAO_API_KEY;
 const NAVER_API_KEY = process.env.NAVER_API_KEY;
 
-// 정적 파일 제공
-app.use(express.static('public'));
+// 정적 파일 제공 (절대 경로로 설정)
+app.use('/public', express.static(path.join(__dirname, 'public')));
 
 // EJS 설정
 app.set('view engine', 'ejs');
-
-// views 폴더 경로를 절대 경로로 설정
-app.set('views', path.join(__dirname, 'views')); // 절대 경로 설정
+app.set('views', path.join(__dirname, 'views')); // views 폴더 절대 경로 설정
 
 // 기본 라우트
 app.get('/', (req, res) => {
