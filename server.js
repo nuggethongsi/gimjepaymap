@@ -1,6 +1,7 @@
 require('dotenv').config(); // .env 파일 로드
 
 const express = require('express');
+const path = require('path'); // path 모듈 로드
 const app = express();
 
 // .env 파일에서 API 키 가져오기
@@ -12,7 +13,9 @@ app.use(express.static('public'));
 
 // EJS 설정
 app.set('view engine', 'ejs');
-app.set('views', './views');
+
+// views 폴더 경로를 절대 경로로 설정
+app.set('views', path.join(__dirname, 'views')); // 절대 경로 설정
 
 // 기본 라우트
 app.get('/', (req, res) => {
