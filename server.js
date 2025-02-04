@@ -2,7 +2,6 @@ require('dotenv').config(); // .env 파일 로드
 
 const express = require('express');
 const app = express();
-const port = 3000;
 
 // .env 파일에서 API 키 가져오기
 const KAKAO_API_KEY = process.env.KAKAO_API_KEY;
@@ -23,6 +22,5 @@ app.get('/', (req, res) => {
     });
 });
 
-app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
-});
+// Vercel에서 서버리스로 처리하므로 app.listen을 제거하고, app을 export함
+module.exports = app;
