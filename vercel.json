@@ -1,7 +1,9 @@
 {
     "version": 2,
-    "env": {
-        "KAKAO_API_KEY": "@kakao-api-key",
-        "NAVER_API_KEY": "@naver-api-key"
-    }
+    "builds": [
+        {
+            "src": "server.js",
+            "use": "@vercel/node"
+        }
+    ]
 }
