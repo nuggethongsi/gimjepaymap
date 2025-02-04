@@ -8,8 +8,8 @@ const app = express();
 const KAKAO_API_KEY = process.env.KAKAO_API_KEY;
 const NAVER_API_KEY = process.env.NAVER_API_KEY;
 
-// 정적 파일 제공 ('/public' 경로는 없어도 돼)
-app.use(express.static(path.join(__dirname, 'public'))); // public을 직접 서빙
+// 정적 파일 제공 (절대 경로 설정, '/public' 경로는 없이 public 폴더 서빙)
+app.use(express.static(path.join(__dirname, 'public'))); // public 폴더 서빙
 
 // EJS 설정
 app.set('view engine', 'ejs');
@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
     });
 });
 
-// data.js MIME 타입 오류 방지
+// data.js MIME 타입 오류 방지 (절대 경로로 서빙)
 app.get('/data/data.js', (req, res) => {
     const dataPath = path.join(__dirname, 'public/data/data.js');
     res.type('application/javascript');
