@@ -9,7 +9,9 @@ const KAKAO_API_KEY = process.env.KAKAO_API_KEY;
 const NAVER_API_KEY = process.env.NAVER_API_KEY;
 
 // ✅ 정적 파일 제공 (절대 경로 설정, '/public' 경로 없이 서빙)
-app.use(express.static(path.join(__dirname, 'public')));
+app.use('/stylesheets', express.static(path.join(__dirname, 'public/stylesheets'))); // 추가된 부분
+app.use('/images', express.static(path.join(__dirname, 'public/images'))); // 이미지 경로 서빙
+app.use('/data', express.static(path.join(__dirname, 'public/data'))); // 데이터 파일 경로 서빙
 
 // EJS 설정
 app.set('view engine', 'ejs');
